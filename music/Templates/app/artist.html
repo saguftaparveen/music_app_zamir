@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<!-- {% include 'partials/header.html' %} -->
+<div class="min-h-screen bg-cover bg-gradient-to-br from-pink-800 via-purple-800 to-blue-800">
+<div class="relative h-96">
+    <img src="{% static 'asset/images/music2.jpg' %}" class="absolute top-0 left-0 h-full w-full object-cover" alt="">
+    <div class="w-full items-center text-white text-5xl text-center relative pt-24">Music can Change your Mind</div>
+</div>
+<div class="container mx-auto px-8">
+    <h1 class="text-3xl text-white font-semibold mb-8 mt-4">Albums</h1>
+    <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {% for a in artist %}
+        <div class="bg-gray-900 shadow-lg rounded-lg px-6 py-8 flex items-start">
+            <img src="{{a.pic.url}}" class="h-20 w-20 rounded-full object-cover flex-shrink-0 ring ring-pink-700 ring-offset-2 ring-offset-gray-900 artist_image" alt="">
+            <div class="ml-8 flex-1">
+                <h4 class="text-xl text-white font-semibold">{{a.name}}</h4>
+                <p class="text-sm text-gray-600">{{ a.music_set.count }} song{{ a.music_set.count | pluralize }}</p>
+                <div class="text-right mt-2">
+                    <a href="/artists/{{a.id}}/" class="text-xs text-pink-600 uppercase font-semibold hover:bg-pink-700 py-2 px-4 rounded-lg hover:bg-opacity-25 transition">Play music</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

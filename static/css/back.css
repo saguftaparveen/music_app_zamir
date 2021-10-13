@@ -1,0 +1,6 @@
+
+.back{
+    background: linear-gradient(45deg, rgba(231, 21, 168, 0.555), rgba(88, 15, 148, 0.425)), url('/static/asset/images/back.jpg/') no-repeat;
+    background-position: center;
+
+}

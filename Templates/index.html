@@ -1,0 +1,140 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="min-h-screen bg-cover bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700">
+
+    {% include 'partials/header.html' %}
+
+    <div class="container mx-auto  pt-24 sm:pt-24   flex text-center justify-between items-center">
+        <img class="ml-16 h-full py-0 hidden sm:inline" src="{% static 'asset/images/Screenshot_1-removebg-preview.png' %}" alt="">
+        <div class=" text-center items-center ml-12 mr-32">
+            <h1 class=" text-5xl  text-center font-bold text-white ">
+                Play millions of songs and get podcasts for free
+            </h1>
+            <button
+                class=" transform transition   hover:scale-125  rounded-full mt-10 px-14 text-2xl font-bold py-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50  hover:from-pink-800 hover:via-purple-600 hover:to-pink-400 "><a
+                    href="{% url 'loginform' %}">Get for free</a> <span><svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg></span></button>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h1 class="text-center text-5xl  font-bold p-10 font-lobster">Why Zamir</h1>
+
+    <div class=" grid grid-cols-1 mt-10 lg:grid-cols-4 md:grid-cols-2">
+        <div class="flex flex-col justify-items-center items-center text-center">
+            <div class=" animate-none sm:animate-bounce flex justify-center items-center  h-60 w-60 rounded-full  bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700"">
+                    <img class=" mx-auto w-32 h-32 object-cover"
+                src="https://img.icons8.com/ios-filled/50/000000/circled-play.png" />
+        </div>
+        <div>
+            <h1 class="text-2xl font-bold p-5 font-lobster">Play your favorites.</h1>
+            <p class=" text-lg sm:text-xl sm:pb-10 pt-0 pb-5 md:px-2">Listen to the songs you love, and discover new
+                music and podcasts.</p>
+        </div>
+    </div>
+    <div class="flex flex-col justify-items-center items-center text-center">
+        <div class="animate-none sm:animate-bounce flex justify-center items-center h-60 w-60 rounded-full bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700"">
+                    <img class=" w-32 h-32 object-cover" src="https://img.icons8.com/ios/50/000000/playlist.png" />
+    </div>
+    <div>
+        <h1 class="text-center text-2xl font-bold p-5 font-lobster">
+            Playlists made easy.
+        </h1>
+        <p class=" text-lg sm:text-xl sm:pb-10 pt-0 pb-5 md:px-2">
+            We'll help you make playlists. Or enjoy playlists made by music experts.
+        </p>
+    </div>
+    </div>
+    <div class="flex flex-col justify-items-center items-center text-center">
+        <div class="animate-none sm:animate-bounce flex justify-center items-center h-60 w-60 rounded-full  bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700"">
+                    <img class=" w-32 h-32 object-cover"
+            src="https://img.icons8.com/ios-filled/50/000000/filled-like.png" />
+    </div>
+    <div>
+        <h1 class="text-center text-2xl font-bold p-5 font-lobster">
+            Make it yours.
+        </h1>
+        <p class=" text-lg sm:text-xl sm:pb-10 pt-0 pb-5 md:px-2">
+            Tell us what you like, and we'll recommend music for you.
+        </p>
+    </div>
+    </div>
+    <div class="flex flex-col justify-items-center items-center text-center">
+        <div class="animate-none sm:animate-bounce flex justify-center items-center h-60 w-60 rounded-full  bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700"">
+                    <img class=" w-32 h-32 object-cover"
+            src="https://img.icons8.com/material-outlined/24/000000/data-in-both-directions.png" />
+    </div>
+    <div>
+        <h1 class="text-center text-2xl font-bold p-5 font-lobster">
+            Save mobile data.
+        </h1>
+        <p class=" text-lg sm:text-xl sm:pb-10 pt-0 pb-5 md:px-2">
+            To use less data when you play music, turn on Data Saver in Settings.
+        </p>
+    </div>
+    </div>
+    </div>
+</section>
+
+<section class=" h-80 items-center  bg-cover bg-gradient-to-br from-pink-800 via-purple-800 to-blue-700">
+    <h1 class="pt-28 text-5xl text-center font-bold text-white ">It's free.
+    </h1>
+    <h1 class=" text-5xl text-center font-bold text-white ">
+        No credit card required.
+    </h1>
+</section>
+<section class="bg-black h-auto mx-auto my-auto ">
+    <div class="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 px-7 py-12 md:px-7">
+        <div>
+            <img class="w-16 h-16 object-cover inline-block" src="{% static 'asset/images/icon.png' %}" alt="">
+            <h1
+                class="inline-block 
+            text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg font-rampartone">
+                Zamir</h1>
+        </div>
+        <div>
+            <h3 class="text-white opacity-60 my-3">
+                COMPANY
+            </h3>
+            <ul class="text-white">
+                <li class="my-2">About</li>
+                <li class="my-2">Jobs</li>
+                <li class="my-2">For the Record</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-white opacity-60 my-3">
+                COMUNITIES
+            </h3>
+            <ul class="text-white">
+                <li class="my-2">For Artists</li>
+                <li class="my-2">Developers</li>
+                <li class="my-2">Advertising</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-white opacity-60 my-3">
+                USEFUL LINKS
+            </h3>
+            <ul class="text-white">
+                <li class="my-2">Support</li>
+                <li class="my-2">Web Player</li>
+                <li class="my-2">Free Mobile App</li>
+            </ul>
+        </div>
+        <div md:py-8 sm:py-2>
+            <img class="inline-block" src="https://img.icons8.com/color/64/000000/instagram-new.png" />
+            <img class="inline-block" src="https://img.icons8.com/color/48/000000/facebook-new.png" />
+            <img class="inline-block" src="https://img.icons8.com/fluency/48/000000/twitter.png" />
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

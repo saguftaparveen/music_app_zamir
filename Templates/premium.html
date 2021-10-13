@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <header class=" flex items-center justify-between bg-black w-full">
+        <div>
+            <div class="inline-block">
+                <img class=" animate-bounce inline-block w-16 h-16 object-cover"
+                    src="{% static 'asset/images/icon.png' %}" alt="">
+            </div>
+            <h1 class=" text-white inline-block">
+                Zamir
+            </h1>
+        </div>
+        <nav class="inline-block">
+            <ul class="flex space-x-6 items-center text-white">
+                <li><a>Premium</a></li>
+                <li><a>Support</a></li>
+                <li><a>Login</a></li>
+                <li><a>Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="py-32 bg-purple-400 ">
+        <h1 class=" text-center text-5xl font-bold ">Introducing Premium Mini</h1>
+        <h3 class="text-2xl text-center py-7"><img class="inline-block"
+                src="https://img.icons8.com/material-outlined/24/000000/rupee.png" /><span>7/day</span></h3>
+        <h2 class="text-3xl text-center"><img class="inline-block"
+                src="https://img.icons8.com/material-outlined/24/000000/rupee.png" /><span>25/day</span></h2>
+        <div class="mx-auto text-center my-5 "><button
+                class=" bg-black mt-5 text-white text-2xl py-3 px-10 rounded-full hover:text-3xl">Get Mini</button>
+        </div>
+    </div>
+    <div class="py-32  bg-pink-400">
+        <h1 class=" text-center text-5xl font-bold ">Get Premium for the whole family</h1>
+        <h3 class="text-2xl text-center py-7"><img class="inline-block"
+                src="https://img.icons8.com/material-outlined/24/000000/rupee.png" /><span>Family members living under
+                one roof can enjoy up to 6 Premium accounts.</span></h3>
+        <h2 class="text-3xl text-center"><img class="inline-block"
+                src="https://img.icons8.com/material-outlined/24/000000/rupee.png" /><span>One-time plans from
+                ₹199</span></h2>
+        <div class="mx-auto text-center my-5 "><button
+                class=" bg-black mt-5 text-white text-2xl py-3 px-10 rounded-full hover:text-3xl">Get Premium For
+                Family</button>
+        </div>
+    </div>
+    <div class="py-24 bg-gray-200">
+        <h1 class="py-10 text-center text-5xl font-bold mb-10">The power of Premium</h1>
+        <div class="grid grid-cols-2 lg:grid-cols-4 items-center">
+            <div class="items-center">
+                <img class="h-40 w-40 mx-auto"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/smartphone-decilne.png" />
+                <h2 class="text-center text-2xl">No interruptions</h2>
+                <h5 class="text-center text-2xl">Play the music you love, ad-free.</h5>
+            </div>
+            <div>
+                <img class="h-40 w-40 mx-auto"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/lounge-music-playlist.png" />
+                <h2 class="text-center text-2xl">Offline playback</h2>
+                <h5 class="text-center text-2xl">Save your data by listening offline.</h5>
+            </div>
+            <div class="items-center">
+                <img class="mx-auto h-40 w-40"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/portable-speaker2.png" />
+                <h2 class="text-center text-2xl">Play everywhere</h2>
+                <h5 class="text-center text-2xl">Listen on your speakers, TV, and other favorite devices.</h5>
+            </div>
+            <div>
+                <img class="h-40 w-40 mx-auto" src="https://img.icons8.com/ios-glyphs/30/000000/pass-money.png" />
+                <h2 class="text-center text-2xl">Pay your way</h2>
+                <h5 class="text-center text-2xl">Prepay with Paytm, UPI, and more.</h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 class="text-3xl font-bold text-center my-6">Pick The Premium</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
+        <div
+            class="border-2 border-gray-200 h-96 w-72 shadow-2xl  mx-auto my-5 py-2 px-2 rounded-xl flex flex-col items-center">
+            <div>
+                <h1 class="mx-auto text-3xl font-bold ">Mini</h1>
+                <h2 class="mx-auto my-2">One-time plans from ₹7</h2>
+                <h3 class="mx-auto text-lg ">1 account</h3>
+                <hr class="border-0.5 border-black shadow-lg mt-10 mb-4">
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Listen to music ad-free on mobile</span><br>
+                </div>
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Group Session</span><br>
+                </div>
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Download 30 songs on 1 mobile device</span><br>
+                </div>
+            </div>
+            <button class="rounded-full py-2 px-12 bg-black text-white font-bold text-lg my-4 ">View Plans</button>
+        </div>
+        <div
+            class="border-2 border-gray-200 h-96 w-72 shadow-2xl  mx-auto my-5 py-2 px-2 rounded-xl flex flex-col items-center">
+            <div>
+                <h1 class="mx-auto text-3xl font-bold ">Individual</h1>
+                <h2 class="mx-auto my-2">One-time plans from ₹129. Auto-renew plans temporarily unavailable.</h2>
+                <h3 class="mx-auto text-lg ">1 account</h3>
+                <hr class="border-0.5 border-black shadow-lg mt-6 mb-4">
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Listen to music ad-free</span><br>
+                </div>
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Group Session</span><br>
+                </div>
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Download 10k songs/device on 5 devices</span><br>
+                </div>
+            </div>
+            <button class="rounded-full py-2 px-12 bg-black text-white font-bold text-lg my-4 ">View Plans</button>
+        </div>
+        <div class="border-2 border-gray-200 h-96 w-72 shadow-2xl  mx-auto my-5 py-2 px-2 rounded-xl flex flex-col items-center">
+            <div>
+                <h1 class="mx-auto text-3xl font-bold ">Duo</h1>
+            <h2 class="mx-auto my-2">One-time plans from ₹165. Auto-renew plans temporarily unavailable.</h2>
+            <h3 class="mx-auto text-lg ">2 account</h3>
+            <hr class="border-0.5 border-black shadow-lg mt-6 mb-4">
+            <div class="flex mx-auto my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg><span>For couples who live together</span><br>
+            </div>
+            <div class="flex mx-auto my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg><span>Group Session</span><br>
+            </div>
+            <div class="flex mx-auto my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg><span>Download 30 songs on 1 mobile device</span><br>
+            </div>
+            </div>
+            <button class="rounded-full py-2 px-12 bg-black text-white font-bold text-lg my-4 ">View Plans</button>
+        </div>
+        <div class="border-2 border-gray-200 h-96 w-72 shadow-2xl  mx-auto my-5 py-2 px-2 rounded-xl flex flex-col items-center">
+            <div>
+                <h1 class="mx-auto text-3xl font-bold ">Familiy</h1>
+                <h2 class="mx-auto my-2">One-time plans from ₹199. Auto-renew plans temporarily unavailable.
+                </h2>
+                <h3 class="mx-auto text-lg ">
+                    Up to 6 accounts</h3>
+                <hr class="border-0.5 border-black shadow-lg mt-6 mb-4">
+                <!-- <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Listen to music ad-free on mobile</span><br>
+                </div> -->
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>For family who live together</span><br>
+                </div>
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Block explicit music</span><br>
+                </div>
+                <!-- <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Group Session</span><br>
+                </div> -->
+                <div class="flex mx-auto my-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg><span>Download 30 songs on 1 mobile device</span><br>
+                </div>
+            </div>
+            <button class="rounded-full py-2 px-12 bg-black text-white font-bold text-lg my-4 ">View Plans</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

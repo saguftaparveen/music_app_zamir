@@ -1,0 +1,98 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="player">
+
+    <!-- Define the section for displaying details -->
+    <div class="details">
+        <div class="now-playing">PLAYING x OF y</div>
+        <div class="track-art"></div>
+        <div class="track-name">Track Name</div>
+        <div class="track-artist">Track Artist</div>
+    </div>
+
+    <!-- Define the section for displaying track buttons -->
+    <div class="buttons">
+        <div class="prev-track" onclick="prevTrack()">
+            <i class="fa fa-step-backward fa-2x"></i>
+        </div>
+        <div class="playpause-track" onclick="playpauseTrack()">
+            <i class="fa fa-play-circle fa-5x"></i>
+        </div>
+        <div class="next-track" onclick="nextTrack()">
+            <i class="fa fa-step-forward fa-2x"></i>
+        </div>
+    </div>
+
+    <!-- Define the section for displaying the seek slider-->
+    <div class="slider_container">
+        <div class="current-time">00:00</div>
+        <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+        <div class="total-duration">00:00</div>
+    </div>
+
+    <!-- Define the section for displaying the volume slider-->
+    <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+        <i class="fa fa-volume-up"></i>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+    const searchParam = new URLSearchParams(window.location.href)
+    console.log(searchParam.has('song'))
+    console.log(searchParam.has('shpg'))
+    if (searchParam.has('shpg')) {
+        console.log("All songs api")
+        try {
+            fetch("/allsongs/").then(response => response.json())
+                .then(data => {
+                    track_list = []
+                    data.forEach(song => {
+                        track_list.push({
+                            id: song.id,
+                            name: song.name,
+                            artist: song.artists.join(', '),
+                            image: song.thumbnail ? song.thumbnail : "https://source.unsplash.com/Qrspubmx6kE/640x360",
+                            path: song.file,
+                        });
+                    })
+                    const songId = "{{song}}"
+                    console.log("song id : ", songId)
+                    let idx = track_list.findIndex(track => track.id == songId)
+                    loadTrack(idx)
+                })
+                .catch(e => console.log(e))
+        }
+        catch (e) {
+
+        }
+    } else {
+        console.log("artist songs")
+        fetchSongs("{{artist.id}}").then(() => {
+
+            if (searchParam.has('song')) {
+                // play 1 song
+                const songId = searchParam.get('song')
+                let idx = track_list.findIndex(track => track.id == songId)
+                loadTrack(idx)
+            } else {
+                // play all songs
+                loadTrack(0)
+            }
+
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
+</script>
+
+{% endblock %}

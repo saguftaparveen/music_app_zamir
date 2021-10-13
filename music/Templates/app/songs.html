@@ -1,0 +1,117 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="fixed left-0 h-screen w-80 bg-gray-900 shadow-lg rounded-r-xl">
+    <img src="{% static 'asset/images/icon.png' %}" class="h-32 w-32 object-contain" alt="">
+    <div class="mb-3 px-4 py-2 border-b border-opacity-5 flex justify-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        <a href="/artists/{{a.id}}/" class="text-white text-lg font-semibold mx-6">Home</a>
+    </div>
+    <div class="mb-3 px-4 py-2 border-b border-opacity-5 flex justify-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        <a href="/search/" class="text-white text-lg font-semibold mx-6">Search</a>
+    </div>
+    <div class="mb-3 px-4 py-2 border-b border-opacity-5 flex justify-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        <a href="" class="text-white text-lg font-semibold mx-6">Your Playlist</a>
+    </div>
+</div>
+<div class="min-h-screen bg-cover bg-gradient-to-br from-pink-800 via-purple-600 to-blue-800 flex">
+    <div class="w-full">
+        <div class="bg-gray-900 pl-96">
+            <div class="py-8 flex items-start mx-auto">
+                <img src="{{a.pic.url}}"
+                    class="h-32 w-32 rounded-full object-cover flex-shrink-0 ring ring-pink-700 ring-offset-2 ring-offset-gray-900 artist_image"
+                    alt="">
+                <div class="ml-8 flex-1">
+                    <h4 class="text-3xl text-white font-semibold">{{a.name}}</h4>
+                    <p class="text-sm text-gray-300 mt-2">{{ a.music_set.count }} song{{ a.music_set.count | pluralize}}
+                    </p>
+                    <div class="mt-4">
+                        <a href="/music/?artist={{a.id}}"
+                            class="text-xs text-pink-600 uppercase font-semibold hover:bg-pink-700 py-2 px-4 rounded-lg hover:bg-opacity-25 transition">
+                            Play music
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-96">
+            <!-- <h4>Popular</h4> -->
+            <div class="container my-4">
+                <div class="w-full md:w-3/4 lg:w-2/3 mx-auto">
+                    <ul>
+                        {% for song in a.music_set.all %}
+                        <li
+                            class="flex items-center bg-gray-900 shadow-lg rounded-lg py-3 px-4 mb-4 hover:bg-opacity-20 cursor-pointer">
+                            <div class="text-xl text-gray-500 mr-8">{{forloop.counter }}</div>
+                            <div class="mr-8">
+                                <img src="{{song.thumbnail.url}}" class="h-10 w-10 object-cover rounded-full" alt="">
+                            </div>
+                            <div class="">
+                                <h4 class="text-lg text-white font-semibold">{{song.name}}</h4>
+                                <p class="text-xs text-gray-300 font-semibold">04:50</p>
+                            </div>
+                            <div class="ml-auto flex items-center">
+                                <button
+                                    class="h-6 w-6 rounded-full hover:bg-gray-700 flex items-center justify-center favbtn"
+                                    data-id="{{song.id}}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 {% if song in playlistsongs %}text-red-600{% else %}text-gray-500{% endif %}" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </button>
+                                <a href="/music/?artist={{a.id}}&song={{song.id}}"
+                                    class="h-6 w-6 rounded-full hover:bg-gray-700 flex items-center justify-center ml-2" data-id="{{song.id}}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    const favbtns = document.querySelectorAll('.favbtn')
+    favbtns.forEach(btn => {
+        btn.addEventListener('click', e => {
+            const btnid = btn.getAttribute('data-id')
+            console.log(btnid)
+
+            const svg = btn.querySelector('svg')
+
+            if (svg.classList.contains('text-gray-500')) {
+                svg.classList.remove('text-gray-500')
+                svg.classList.add('text-red-600')
+            } else {
+                svg.classList.add('text-gray-500')
+                svg.classList.remove('text-red-600')
+            }
+
+        })
+    })
+
+</script>
+
+{% endblock %}

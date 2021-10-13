@@ -1,0 +1,60 @@
+{% load static %}
+
+<header class=" z-50 bg-black opacity-60 fixed w-full">
+
+    <div class="container mx-auto flex justify-between items-center">
+        <div>
+            <img class=" animate-bounce inline-block w-16 h-16 object-cover" src="{% static 'asset/images/icon.png' %}"
+                alt="">
+            <h1
+                class="inline-block 
+        text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg font-rampartone">
+                Zamir</h1>
+        </div>
+        <img class="md:hidden" src="https://img.icons8.com/nolan/64/menu.png" onclick="openNav()" />
+        <nav class=" hidden md:inline">
+            <ul class=" text-white flex items-center space-x-6  font-rampartone">
+                <li><a href='{% url 'premium' %}'
+                        class="transition-colors cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-blue-700 text-lg">
+                        Premium
+                    </a></li>
+                <li><a
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Support
+                    </a></li>
+                <li><a
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Download
+                    </a></li>
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'logout' %}" method="POST">{% csrf_token %}
+                            <button type="submit" class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Logout
+                        </button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'registerform' %}"
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Register
+                    </a></li>
+                    <!-- <li><a href="{% url 'signup' %}"
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Sign up
+                    </a></li> -->
+                    <!-- <li><a href="{% url 'logout' %}"
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Logout
+                    </a></li> -->
+                    <li><a href="{% url 'loginform' %}"
+                        class=" cursor-pointer hover:text-transparent bg-gradient-to-br bg-clip-text from-pink-800 via-purple-600 to-pink-400 text-lg">
+                        Log in
+                    </a></li>
+                    {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+
+</header>
