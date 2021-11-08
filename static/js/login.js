@@ -18,3 +18,7 @@ function myFunc(){
     }
     return false
 }
+
+function home(){
+    location.href="http://127.0.0.1:8000/"
+}

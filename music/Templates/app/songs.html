@@ -5,7 +5,7 @@
 {% block content %}
 <div class="fixed left-0 h-screen w-80 bg-gray-900 shadow-lg rounded-r-xl">
     <img src="{% static 'asset/images/icon.png' %}" class="h-32 w-32 object-contain" alt="">
-    <div class="mb-3 px-4 py-2 border-b border-opacity-5 flex justify-items-center">
+    <div class="mb-3 px-4 py-2 border-b border-opacity-5 flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
@@ -89,28 +89,39 @@
         </div>
     </div>
 </div>
-
+{% csrf_token %}
 
 <script>
 
     const favbtns = document.querySelectorAll('.favbtn')
-    favbtns.forEach(btn => {
-        btn.addEventListener('click', e => {
-            const btnid = btn.getAttribute('data-id')
-            console.log(btnid)
+        favbtns.forEach(btn => {
+            btn.addEventListener('click', e => {
+                const songid = btn.getAttribute('data-id')
 
-            const svg = btn.querySelector('svg')
+                const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                fetch('/update_playlist/' + songid + '/', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        const svg = btn.querySelector('svg')
 
-            if (svg.classList.contains('text-gray-500')) {
-                svg.classList.remove('text-gray-500')
-                svg.classList.add('text-red-600')
-            } else {
-                svg.classList.add('text-gray-500')
-                svg.classList.remove('text-red-600')
-            }
-
+                        if (data.added) {
+                            svg.classList.remove('text-gray-500')
+                            svg.classList.add('text-red-600')
+                        } else {
+                            svg.classList.add('text-gray-500')
+                            svg.classList.remove('text-red-600')
+                        }
+                    })
+                    .catch(err => console.log(err))
+            })
         })
-    })
 
 </script>
 

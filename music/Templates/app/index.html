@@ -40,6 +40,16 @@
     </div>
 </div>
 
+<div class="w-72 h-screen bg-gray-700 fixed top-0 bottom-0 left-0 px-4 py-8">
+    <div class="flex mb-4 text-white">
+        <button>
+            <i class="fas fa-list-ul"></i>
+        </button>
+        <h5 class="ml-4">PLAYLIST</h5>
+    </div>
+    <ul id="playlist"></ul>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -50,8 +60,6 @@
     console.log(searchParam.has('song'))
     console.log(searchParam.has('shpg'))
     if (searchParam.has('shpg')) {
-        console.log("All songs api")
-        try {
             fetch("/allsongs/").then(response => response.json())
                 .then(data => {
                     track_list = []
@@ -68,14 +76,10 @@
                     console.log("song id : ", songId)
                     let idx = track_list.findIndex(track => track.id == songId)
                     loadTrack(idx)
+                    createPlaylist(track_list)
                 })
                 .catch(e => console.log(e))
-        }
-        catch (e) {
-
-        }
     } else {
-        console.log("artist songs")
         fetchSongs("{{artist.id}}").then(() => {
 
             if (searchParam.has('song')) {
@@ -87,12 +91,34 @@
                 // play all songs
                 loadTrack(0)
             }
-
+            createPlaylist(track_list)
         }).catch(e => {
             console.log(e)
         })
     }
 
+    function createPlaylist(tracks) {
+        const playlist = document.querySelector('#playlist')
+        tracks.forEach((track, idx) => {
+            let template = `
+            <li onclick="clickListItem(${idx})"
+            class="playlist-item flex items-center bg-gray-900 shadow-lg rounded-lg py-3 px-4 mb-4 hover:bg-opacity-20 cursor-pointer">
+            <div class="mr-2">
+                <img src="${track.image}" class="h-10 w-10 object-cover rounded-full" alt="">
+            </div>
+            <div class="">
+                <h4 class="text-lg text-white font-semibold">${track.name}</h4>
+                <p class="text-xs text-gray-300 font-semibold">${track.artist}</p>
+            </div>
+        </li>
+            `
+            playlist.innerHTML += template
+        })
+    }
+
+    function clickListItem(idx) {
+        loadTrack(idx)
+    }
 </script>
 
 {% endblock %}

@@ -56,7 +56,7 @@
                                 <button
                                     class="h-6 w-6 rounded-full hover:bg-gray-700 flex items-center justify-center favbtn"
                                     data-id="{{song.id}}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 {% if song in playlistsongs %}text-red-600{% else %}text-gray-500{% endif %}" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -82,5 +82,41 @@
         </div>
     </div>
 </div>
+
+{% csrf_token %}
+
+<script>
+
+    const favbtns = document.querySelectorAll('.favbtn')
+        favbtns.forEach(btn => {
+            btn.addEventListener('click', e => {
+                const songid = btn.getAttribute('data-id')
+
+                const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                fetch('/update_playlist/' + songid + '/', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        const svg = btn.querySelector('svg')
+
+                        if (data.added) {
+                            svg.classList.remove('text-gray-500')
+                            svg.classList.add('text-red-600')
+                        } else {
+                            svg.classList.add('text-gray-500')
+                            svg.classList.remove('text-red-600')
+                        }
+                    })
+                    .catch(err => console.log(err))
+            })
+        })
+
+</script>
 
 {% endblock %}

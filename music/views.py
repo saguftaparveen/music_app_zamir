@@ -56,12 +56,37 @@ def songs_view(request,id):
     return render(request,'app/songs.html',context)
 
 def search_view(request):
+    if not request.user.is_authenticated:
+        return redirect(reverse('loginform'))
+
     musics = Music.objects.all()
 
     search_term = request.GET.get('search')
     if search_term:
         musics=musics.filter(name__icontains=search_term)
+
+    playlist = Playlist.objects.filter(user=request.user)
+
     context={
-        'songs':musics
+        'songs':musics,
+        "playlistsongs": playlist[0].songs.all()
     }
     return render(request,'app/search.html',context)
+    
+
+@decorators.api_view(['POST'])
+def update_playlist(request, song_id):
+    try:
+        playlist = Playlist.objects.filter(user=request.user)[0]
+        song = Music.objects.get(id=song_id)
+        added = True
+        if song in playlist.songs.all():
+            added = False
+            playlist.songs.remove(song)
+        else:
+            playlist.songs.add(song)
+
+        return response.Response({"status": True, "added": added})
+    except Exception as e:
+        return response.Response({"status": False, "message": str(e)})
+

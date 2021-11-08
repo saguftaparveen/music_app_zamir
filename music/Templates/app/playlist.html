@@ -1,0 +1,45 @@
+{% block content %}
+<div class="pl-96">
+    <!-- <h4>Popular</h4> -->
+    <div class="container my-4">
+        <div class="w-full md:w-3/4 lg:w-2/3 mx-auto">
+            <ul>
+                {% for song in a.music_set.all %}
+                <li
+                    class="flex items-center bg-gray-900 shadow-lg rounded-lg py-3 px-4 mb-4 hover:bg-opacity-20 cursor-pointer">
+                    <div class="text-xl text-gray-500 mr-8">{{forloop.counter }}</div>
+                    <div class="mr-8">
+                        <img src="{{song.thumbnail.url}}" class="h-10 w-10 object-cover rounded-full" alt="">
+                    </div>
+                    <div class="">
+                        <h4 class="text-lg text-white font-semibold">{{song.name}}</h4>
+                        <p class="text-xs text-gray-300 font-semibold">04:50</p>
+                    </div>
+                    <div class="ml-auto flex items-center">
+                        <button
+                            class="h-6 w-6 rounded-full hover:bg-gray-700 flex items-center justify-center favbtn"
+                            data-id="{{song.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 {% if song in playlistsongs %}text-red-600{% else %}text-gray-500{% endif %}" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </button>
+                        <a href="/music/?artist={{a.id}}&song={{song.id}}"
+                            class="h-6 w-6 rounded-full hover:bg-gray-700 flex items-center justify-center ml-2" data-id="{{song.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

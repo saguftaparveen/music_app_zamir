@@ -11,12 +11,12 @@ class Loginform(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'placeholder':'Username',
-                'class': 'bg-transparent my-4 flex justify-center text-2xl mx-auto border-b-2 focus:bg-transparent focus:border-b-2 focus:outline-none focus:border-gray-700  form-control',
+                'class': 'bg-transparent my-4 flex justify-center text-2xl mx-auto border-b-2 focus:bg-transparent focus:border-b-2 focus:outline-none focus:border-gray-700',
                 'autocomplete':'off'
                 }),
             'password': forms.PasswordInput(attrs={
                 'placeholder':'Password' ,
-                'class': 'bg-transparent my-2 flex justify-center text-2xl mx-auto border-b-2 focus:bg-transparent focus:border-gray-700 focus:outline-none focus:border-gray-700  form-control',
+                'class': 'bg-transparent my-2 flex justify-center text-2xl mx-auto border-b-2 focus:bg-pink-300 focus:border-gray-700 focus:outline-none focus:border-gray-700',
                 'autocomplete':'off'
                 }),
         }
